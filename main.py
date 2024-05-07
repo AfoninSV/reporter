@@ -18,7 +18,11 @@ def get_time(delta:int) -> str:
 
 def compile_data(comp_to) -> None:
     data = str()
-    time_str = f'{get_time(1)}-{get_time(0)} Seal Pin\n'
+    
+    # !Change to your machine name
+    machine_name = "Welding line"
+
+    time_str = f'{get_time(1)}-{get_time(0)} {machine_name}\n'
     nums_list = nums.get(1.0, "end-1c").split()
     data += time_str
 
@@ -75,10 +79,10 @@ out.grid(column=0, row=2, sticky='WN')
 rep_part = tk.Frame(main)
 rep_part.grid(column=0, row=1)
 
-name1 = name_field(rep_part, 'FSL 9-1 (70.2Ah BMW Series)', 0, 0)
-name2 = name_field(rep_part, 'FSL 9-2 (70.2Ah BMW Series)', 0, 1)
-name3 = name_field(rep_part, 'FSL 10-1 (60.6Ah BMW Series)', 0, 2)
-name4 = name_field(rep_part, 'FSL 10-2 (60.6Ah BMW Series)', 0, 3)
+name1 = name_field(rep_part, 'Prod. Line #9-1 (prod. type#)', 0, 0)
+name2 = name_field(rep_part, 'Prod. Line #9-2 (prod. type#)', 0, 1)
+name3 = name_field(rep_part, 'Prod. Line #10-1 (prod. type#)', 0, 2)
+name4 = name_field(rep_part, 'Prod. Line #10-2 (prod. type#)', 0, 3)
 
 nums = tk.Text(rep_part)
 nums.configure(height=4, width=4, pady=1, font=('Helvetica bold', 21), spacing1=5)
@@ -106,8 +110,9 @@ make.grid(column=0, columnspan=3, row=4, sticky='WE')
 make['text'] = 'report'
 
 output = tk.Text(out)
-# output.insert(tk.INSERT, get_time(0))
 output.configure(height=32, width=110, padx=3)
 output.grid(column=0, row=5, sticky='W')
-get_notes()
-root.mainloop()
+
+if __name__ == "__main__":
+    get_notes()
+    root.mainloop()
