@@ -1,9 +1,10 @@
 import tkinter as tk
 from datetime import datetime, timedelta
+from pathlib import Path
 import os
 
 def get_notes() -> list:
-    path = R'C:\Users\SDIHU\Documents\reporter\20.txt'
+    path = f"{Path(__file__).parent.absolute()}.20_notes.txt"
     if os.path.isfile(path):
         with open(path, 'r') as note_file:
             data = note_file.readlines()
