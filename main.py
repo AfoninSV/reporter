@@ -2,7 +2,7 @@ import tkinter as tk
 from datetime import datetime, timedelta
 import os
 
-def get_notes():
+def get_notes() -> list:
     path = R'C:\Users\SDIHU\Documents\reporter\20.txt'
     if os.path.isfile(path):
         with open(path, 'r') as note_file:
@@ -10,12 +10,12 @@ def get_notes():
             return data
     return list()
 
-def get_time(delta:int):
+def get_time(delta:int) -> str:
     ftime= datetime.now() - timedelta(hours=delta)
     ftime = ftime.strftime('%H:00')
     return ftime
 
-def compile_data(comp_to):
+def compile_data(comp_to) -> None:
     data = str()
     time_str = f'{get_time(1)}-{get_time(0)} Seal Pin\n'
     nums_list = nums.get(1.0, "end-1c").split()
@@ -57,7 +57,11 @@ def noter_field(master, x, y, text=None):
 # column -> x row -> y
 
 root = tk.Tk()
-root.geometry('1800x590')
+
+# Set window size
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+root.geometry(f"{screen_width - 100}x{screen_height // 2}")
 
 main = tk.Frame(root)
 out = tk.Frame(root)
