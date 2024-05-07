@@ -8,6 +8,7 @@ def get_notes():
         with open(path, 'r') as note_file:
             data = note_file.readlines()
             return data
+    return list()
 
 def get_time(delta:int):
     ftime= datetime.now() - timedelta(hours=delta)
@@ -86,7 +87,7 @@ rep4 = err_field(rep_part, 2, 3)
 # noter fields qty
 
 noter_data = get_notes()
-noter_range = len(noter_data) - 1
+noter_range = (len(noter_data) - 1)
 for i in range(20):
     if i > noter_range:
         noter_field(noter, 0, i)
